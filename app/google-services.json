@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "892827359582",
+    "firebase_url": "https://quiz-series-b1cd4.firebaseio.com",
+    "project_id": "quiz-series-b1cd4",
+    "storage_bucket": "quiz-series-b1cd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892827359582:android:5c2ac19b7984c16e",
+        "android_client_info": {
+          "package_name": "com.example.dani.quizseries"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892827359582-0h4l7g8337dvrhhk74o8d0qlardnjm7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF01SFCnoCeeUokxN8_kiRqdiFvsGl-rI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

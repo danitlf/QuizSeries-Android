@@ -56,7 +56,7 @@ public class WebClient {
 
             for (int i = 0; i < len; i++) {
 
-                respostas.add(new Serie(seriesJsonArray.getJSONObject(i).getString("label"),seriesJsonArray.getJSONObject(i).getString("id"), seriesJsonArray.getJSONObject(i).getString("cor")));
+                respostas.add(new Serie(seriesJsonArray.getJSONObject(i).getString("label"),seriesJsonArray.getJSONObject(i).getString("id"), seriesJsonArray.getJSONObject(i).getString("cor"), seriesJsonArray.getJSONObject(i).getString("url_icon")));
 
             }
 

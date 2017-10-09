@@ -7,13 +7,34 @@
     tools:context="com.example.dani.quizseries.Jogo_Screen"
     android:background="@color/colorPrimary">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignRight="@+id/segundosMarcador"
+        android:id="@+id/jogoSegundos"
+        android:textColor="#fff"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="'"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:id="@+id/segundosMarcador"
+        android:textColor="#fff"/>
+
     <android.support.v7.widget.CardView
         android:id="@+id/box_pergunta"
         android:layout_width="300dp"
 
         android:layout_height="150dp"
         app:cardCornerRadius="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true">
 
         <RelativeLayout

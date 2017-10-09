@@ -33,7 +33,7 @@ public class CriaBanco extends SQLiteOpenHelper{
     private static final int VERSAO = 1;
 
 
-    public CriaBanco(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public CriaBanco(Context context) {
         super(context, NOME_BANCO, null, VERSAO);
     }
 
@@ -41,26 +41,26 @@ public class CriaBanco extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         //cria tabela do usuário
-        String sql = "CREATE TABLE"+TABELA_USER+"("
-                + ID + "integer primary key autoincrement,"
-                + ID_USER + "text,"
-                + NOME_USER + "text"
+        String sql = "CREATE TABLE "+TABELA_USER+"("
+                + ID + " integer primary key autoincrement,"
+                + ID_USER + " text,"
+                + NOME_USER + " text"
 
                 +")";
 
         db.execSQL(sql);
 
         //cria tabela de questoes
-        String sql_questions = "CREATE TABLE"+TABELA_QUESTION+"("
-                + ID + "integer primary key autoincrement,"
-                + LABEL_QUESTION + "text,"
-                + OPC1_QUESTION + "text,"
-                + OPC2_QUESTION + "text,"
-                + OPC3_QUESTION + "text,"
-                + OPC4_QUESTION + "text,"
-                + CORRETA_QUESTION + "text,"
-                + RESPONDEU_QUESTION + "integer default 0,"
-                + ACERTOU_QUESTION + "integer"
+        String sql_questions = "CREATE TABLE "+TABELA_QUESTION+"("
+                + ID + " integer primary key autoincrement,"
+                + LABEL_QUESTION + " text,"
+                + OPC1_QUESTION + " text,"
+                + OPC2_QUESTION + " text,"
+                + OPC3_QUESTION + " text,"
+                + OPC4_QUESTION + " text,"
+                + CORRETA_QUESTION + " text,"
+                + RESPONDEU_QUESTION + " integer default 0,"
+                + ACERTOU_QUESTION + " integer"
 
                 +")";
 

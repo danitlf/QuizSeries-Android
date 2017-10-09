@@ -10,6 +10,7 @@ public class Serie implements Serializable {
     private String name;
     private String id;
     private String cor;
+    private String icon_url;
 
     public Serie(String name, String id) {
         this.name = name;
@@ -17,10 +18,11 @@ public class Serie implements Serializable {
 
     }
 
-    public Serie(String name, String id, String cor) {
+    public Serie(String name, String id, String cor, String icon_url) {
         this.name = name;
         this.id = id;
         this.cor = cor;
+        this.icon_url = icon_url;
 
     }
 
@@ -50,5 +52,13 @@ public class Serie implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getIcon_url() {
+        return icon_url;
+    }
+
+    public void setIcon_url(String icon_url) {
+        this.icon_url = icon_url;
     }
 }

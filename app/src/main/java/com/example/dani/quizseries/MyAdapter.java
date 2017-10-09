@@ -1,13 +1,17 @@
 package com.example.dani.quizseries;
 
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.dani.quizseries.models.Serie;
 
 import java.util.List;
@@ -20,6 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<Serie> mDataset;
 
 
+
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -27,9 +32,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // each data item is just a string in this case
         public TextView mTextView;
         public RelativeLayout row;
+        public ImageView icon;
+        public View ourView;
         public ViewHolder(View v) {
             super(v);
+            ourView = v;
             mTextView = (TextView) v.findViewById(R.id.serieName);
+            icon = (ImageView) v.findViewById(R.id.iconSerieList);
             row = v.findViewById(R.id.rowSerie);
 
         }
@@ -59,6 +68,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mTextView.setText(mDataset.get(position).getName());
+
+
+////      Glide.with(holder.ourView).load("https://firebasestorage.googleapis.com/v0/b/quiz-series-b1cd4.appspot.com/o/friends.png?alt=media&token=0dbf2fd0-17b6-4f1e-9bd0-9026c3b658c1").into(holder.icon);
+//
+        Glide.with(holder.ourView).load(mDataset.get(position).getIcon_url()).into(holder.icon);
+//        Glide.with(holder.ourView).load("https://firebasestorage.googleapis.com/v0/b/quiz-series-b1cd4.appspot.com/o/friends.png?alt=media&token=0dbf2fd0-17b6-4f1e-9bd0-9026c3b658c1").into(holder.icon);
+
 
 
         holder.row.setBackgroundColor(Color.parseColor(mDataset.get(position).getCor()));

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dani.quizseries.PerdeuActivity"
+    android:background="@color/colorPrimary">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="300dp"
+        app:cardCornerRadius="5dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="50dp"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/labelScore"
+        android:text="Score"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="70dp"
+        android:id="@+id/scorePartida"
+        android:textAlignment="center"
+        android:layout_marginTop="90dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="100"
+        android:fontFamily="casual"/>
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_dark"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="20dp"
+            android:text="Tentar Novamente"
+            android:textColor="#fff"/>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

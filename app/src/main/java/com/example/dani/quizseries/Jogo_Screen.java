@@ -2,26 +2,38 @@ package com.example.dani.quizseries;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dani.quizseries.models.Pergunta;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Jogo_Screen extends AppCompatActivity {
     List<Pergunta> perguntas;
     int numPergunta = 0;
+    TextView segundos;
     Pergunta perguntaAtual;
     Button opc1;
     Button opc2;
     Button opc3;
     Button opc4;
+    Intent toPerdeu;
+    Integer scoreTotal = 0;
     TextView box_pergunta;
+    Integer SegundosPorPergunta = 14;
+    Integer segundosCounter;
+    Integer MAX_SEGUNDOS = 11000;
+    Timer T;
+    CountDownTimer counter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +46,7 @@ public class Jogo_Screen extends AppCompatActivity {
         opc3 = (Button) findViewById(R.id.opc3);
         opc4 = (Button) findViewById(R.id.opc4);
         box_pergunta = (TextView) findViewById(R.id.box_pergunta_text);
+        segundos = (TextView) findViewById(R.id.jogoSegundos);
 
         try {
             perguntaAtual =  perguntas.get(numPergunta);
@@ -72,6 +85,28 @@ public class Jogo_Screen extends AppCompatActivity {
         });
 
 
+        counter = contador();
+
+    }
+
+    private CountDownTimer contador() {
+        segundosCounter = 11;
+        CountDownTimer c = new CountDownTimer(MAX_SEGUNDOS, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                segundos.setText(Integer.toString(--segundosCounter));
+            }
+
+            public void onFinish() {
+                segundos.setText(Integer.toString(--segundosCounter));
+
+                //caso o tempo acabe o jogo termina
+                perdeu();
+            }
+        }.start();
+
+        return c;
+
     }
 
     public void trocaValores(Pergunta p){
@@ -81,13 +116,28 @@ public class Jogo_Screen extends AppCompatActivity {
         opc4.setText(p.getOpt4());
         box_pergunta.setText(p.getLabel());
 
+        //para contador e inicia uma nova contagem
+        counter.cancel();
+        counter = contador();
+
     }
 
     public void opcEscolhida(String opc, Button btn) {
 
+        // para contador
+        counter.cancel();
+
         if(perguntaAtual.getCorreta().equals(opc)){
+            // muda o btn para verdee o texto dele para branco
             btn.setBackgroundResource(R.drawable.pergunta_certa);
             btn.setTextColor(Color.parseColor("#ffffff"));
+            //soma score
+            scoreTotal+=10;
+
+            numPergunta+=1;
+            perguntaAtual = perguntas.get(numPergunta);
+
+            proximaPergunta();
 
         }
         else{
@@ -96,16 +146,14 @@ public class Jogo_Screen extends AppCompatActivity {
             pintaOpcCerta(perguntaAtual.getCorreta());
         }
 
-        numPergunta+=1;
-        perguntaAtual = perguntas.get(numPergunta);
 
-        proximaPergunta();
 
 
     }
 
     private void proximaPergunta() {
         Handler handler = new Handler();
+        // aguarda um segundo e meio e reseta as configuracoes iniciais
         handler.postDelayed(new Runnable() {
             public void run() {
                 opc1.setBackgroundResource(R.drawable.opc_pergunta);
@@ -141,6 +189,22 @@ public class Jogo_Screen extends AppCompatActivity {
             opc4.setBackgroundResource(R.drawable.pergunta_certa);
             opc4.setTextColor(Color.parseColor("#ffffff"));
         }
+
+        Handler handler = new Handler();
+
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                //encerra o jogo
+                perdeu();
+            }
+        }, 1500);
+    }
+
+    private void perdeu(){
+        toPerdeu = new Intent(getApplicationContext(), PerdeuActivity.class);
+        toPerdeu.putExtra("score", scoreTotal);
+        startActivity(toPerdeu);
+        finish();
     }
 
 

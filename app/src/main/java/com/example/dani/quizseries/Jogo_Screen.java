@@ -29,7 +29,6 @@ public class Jogo_Screen extends AppCompatActivity {
     Intent toPerdeu;
     Integer scoreTotal = 0;
     TextView box_pergunta;
-    Integer SegundosPorPergunta = 14;
     Integer segundosCounter;
     Integer MAX_SEGUNDOS = 11000;
     Timer T;
@@ -206,6 +205,5 @@ public class Jogo_Screen extends AppCompatActivity {
         startActivity(toPerdeu);
         finish();
     }
-
 
 }
